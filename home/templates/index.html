@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}     
+
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="{% static '' %}img/images.jpeg" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- <span class="navbar-toggler-icon"></span> -->
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form action="{% url 'index' %}" method="POST" class="d-flex">
+            {% csrf_token %}
+              <input class="form-control me-2 w-100 p-3" name="search" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary rounded" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- header done -->
+  
+
+{% endblock header %}
+
+{% block carousel %}    
+
+<!-- banner -->
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item h-100 active" data-bs-interval="10000">
+        <img src="{% static '' %}img/cristiano-pinto-2lWGQ02DGL8-unsplash.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item h-100" data-bs-interval="2000">
+        <img src="{% static '' %}img/bady-abbas-cUzk-T4BcLA-unsplash.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- banner done -->
+
+{% endblock carousel %}
+
+{% block content %}      
+    
+    {% if search_item %}
+
+        <div class="container mt-5 mb-5">
+            <h2 class="fs-4 text-dark text-uppercase">Available Meals</h2>
+            <div class="row justify-content-center"> 
+                {% for items in search_item %}   
+                    <div class="col-12 btn-outline-primary text-dark">
+                        <div class="card border-1 p-4 fs-4">
+                        <div class="card-body justify-content-between d-flex">
+                            <span>{{items.name}}</span>
+                            <span> Rs{{items.price}}</span>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    {% else %}
+        <h2 class="text-center mt-5 mb-5">You searched for {{items}}, and was not found!...</h2> 
+    {% endif %}
+            
+
+
+{% endblock content %}
+
+
+{% block footer %}     
+
+     <!-- footer -->
+     <div class="footer mt-5 p-4">
+        <div class="container-fluid pb-5">
+            <div class="row justify-content-center">
+                <div class="col-10 col-md-5">
+                    <h6 class="text-uppercase">Contact US</h6>
+                    <ul class="list-unstyled">
+                      <li class="mb-3">
+                        <span class="pe-2"><i class="fa-solid fa-phone"></i></span>
+                        <span><a href="tel:+1 (222) 345 47854">+1 (222) 345 47854</a></span>
+                      </li>
+                      <li class="mb-3">
+                        <span class="pe-2"><i class="fa-solid fa-envelope"></i></span>
+                        <span><a href="mail:pogooluwa12@gmail.com">pogooluwa12@gmail.com</a></span>
+                      </li>
+                    </ul>
+
+                    <div class="mt-2">
+                        <span class="pe-2"><i class="fa-solid fa-location-dot"></i></span>
+                        <span> Mumbai, India.</span>
+                    </div>
+                </div>
+                <div class="col-10 col-md-5">
+                    <h6>Signup for discount and updates</h6>
+                    <form action="">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control p-3" placeholder="Enter your phone number or email address" aria-label="Enter your phone number or email address" aria-describedby="button-addon2">
+                            <button class="btn btn-primary foot p-3" type="button" id="button-addon2">Sign up</button>
+                        </div>
+                    </form>
+                    <div class="help pt-2">
+                        <a href="">About Us</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="footer2 border-top pt-3">
+            <p>2023. Powered By Auracule &#128154;</p>
+        </div>
+    </div>
+    <!-- footer done -->
+
+{% endblock footer %}

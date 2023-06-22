@@ -1,0 +1,79 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300&family=Tilt+Warp&display=swap');
+.navbar{
+    background: white;
+    box-shadow: 1px 2px 2px 2px 1px solid silver;
+    padding: 1.5rem;
+}
+.navbar .navbar-brand img{
+    width: 7rem;
+    /* padding-right: 2rem; */
+}
+#navbarSupportedContent div{
+    background: grey;
+
+}
+.navbar form{
+    width: 40%;
+}
+.navbar .nav-item .nav-link{
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition: ease 1s;
+}
+.navbar .nav-item .nav-link:hover{
+    color: white;
+    background: grey;
+    padding: .5rem;
+}
+
+.footer{
+    background: black;
+    color: white;
+    padding: 1.2rem;
+}
+.foot{
+    background: black;
+    color: white;
+}
+.footer2{
+    padding-left: 10rem;
+}
+
+.carousel-inner{
+    height: 50vh;
+}
+
+@media(max-width: 1399.98px){
+    .carousel-inner{
+        height: 100vh;
+    }
+}
+@media(max-width: 1199.98px){}
+@media(max-width: 991.98px){
+    .carousel-inner{
+        height: 60vh;
+    }
+}
+@media(max-width:767.98px){
+    .carousel-inner{
+        height: 50vh;
+    }
+    .navbar form{
+        width: 100%;
+    }
+
+}
+@media(max-width: 575.68){
+
+}
+@media(max-width: 480){
+    .navbar form{
+        width: 100%;
+    }
+
+    .carousel-inner{
+        height: 50vh;
+    }
+}
